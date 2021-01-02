@@ -52,7 +52,7 @@
             return document.querySelector("#popup-logo");
         }
     
-        _setIcon(icon, iconClass) {
+        _setIcon(icon, iconClass, showLogo) {
             var LOGO = this.getLogo();
     
             // Delete the previous icon
@@ -60,14 +60,16 @@
                 LOGO.removeChild(LOGO.firstElementChild);
             }
     
-            // Create the logo of the popup according to [icon]
-            var sign = document.createElement("i");
-            sign.className = icon;
-    
-            // Set the correct class name
-            // and display the logo previously created
-            LOGO.className = iconClass;
-            LOGO.appendChild(sign);
+            if (showLogo) {
+                // Create the logo of the popup according to [icon]
+                var sign = document.createElement("i");
+                sign.className = icon;
+        
+                // Set the correct class name
+                // and display the logo previously created
+                LOGO.className = iconClass;
+                LOGO.appendChild(sign);
+            }
         }
 
         _setText(text) {
@@ -82,8 +84,8 @@
             this.getElement().classList.remove("popup-visible");
         }
     
-        _create(Notif) {
-            this._setIcon(Notif.logo, Notif.className);
+        _create(Notif, showLogo) {
+            this._setIcon(Notif.logo, Notif.className, showLogo);
             this._setText(Notif.text);
             this._show();
     
@@ -97,16 +99,16 @@
             return this.getElement().classList.contains("popup-visible");
         }
     
-        sendNotification(Notification) {
+        sendNotification(Notification, showLogo=true) {
             if (this._isAlreadyShowing()) {
                 this._hide();
     
                 var self = this;
                 window.setTimeout(() => {
-                    self._create(Notification);
+                    self._create(Notification, showLogo);
                 }, 1000);
             } else {
-                this._create(Notification);
+                this._create(Notification, showLogo);
             }
         }
     }
@@ -153,11 +155,11 @@
             var self = this;
             var allCases = callbacks.allCases;
             document.querySelector('#agreement-yes').addEventListener('click', function(e) {
-                self._hide(allCases);
+                self.hide(allCases);
                 if (callbacks.yes) callbacks.yes(e);
             });
             document.querySelector('#agreement-no').addEventListener('click', function(e) {
-                self._hide(allCases);
+                self.hide(allCases);
                 if (callbacks.no) callbacks.no(e);
             });
         }
@@ -166,9 +168,9 @@
             this.getElement().classList.add("popup-visible");
         }
     
-        _hide(allCases) {
+        hide(onHiding) {
             this.getElement().classList.remove("popup-visible");
-            if (allCases) allCases();
+            if (onHiding) onHiding();
         }
 
         _isAlreadyShowing() {

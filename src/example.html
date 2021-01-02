@@ -1,6 +1,6 @@
 <!-- 
     Example page of the version : 1.0.0
-    Date : January 2nd, 2021
+    Date : January 2, 2021
  -->
 <!DOCTYPE html>
 <html lang="en">
@@ -44,10 +44,10 @@
             var agreement = new BasicAgreement();
             agreement.askForAgreement("The page is loaded. Do you agree with that ?", function() {
                 var popup = new BasicPopup();
-                popup.sendNotification(new ConfirmationNotification("Great ! You can study the code of the page now :)"));
+                popup.sendNotification(new ConfirmationNotification("Great ! You can study the code of the page now :)"), false);
             }, function() {
                 var popup = new BasicPopup();
-                popup.sendNotification(new AlertNotification("Oh no ! How dare you ?"));
+                popup.sendNotification(new AlertNotification("Oh no ! How dare you ?"), true);
             }, function() {
                 document.querySelector("#title").style.opacity=1;
             });
