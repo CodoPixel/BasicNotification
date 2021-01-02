@@ -1,0 +1,57 @@
+<!-- 
+    Example page of the version : 1.0.0
+    Date : January 2nd, 2021
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Better to put fontawesome with popup.js (for the icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="popup-css.css">
+    
+    <title>Testing popup.js</title>
+
+    <style>
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: rgb(245, 245, 245);
+            height: 100vh;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #title {
+            opacity: 0;
+            transition: opacity 200ms ease-in;
+        }
+    </style>
+
+    <script src="popup.js"></script>
+</head>
+<body>
+    
+    <h1 id="title">Reload the page</h1>
+
+    <script>
+        // full example
+
+        window.addEventListener('load', function() {
+            var agreement = new BasicAgreement();
+            agreement.askForAgreement("The page is loaded. Do you agree with that ?", function() {
+                var popup = new BasicPopup();
+                popup.sendNotification(new ConfirmationNotification("Great ! You can study the code of the page now :)"));
+            }, function() {
+                var popup = new BasicPopup();
+                popup.sendNotification(new AlertNotification("Oh no ! How dare you ?"));
+            }, function() {
+                document.querySelector("#title").style.opacity=1;
+            });
+        });
+    </script>
+</body>
+</html>
