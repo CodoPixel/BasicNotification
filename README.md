@@ -22,7 +22,7 @@ BasicNotification needs a css file to work properly :
 
 ## BasicPopup
 
-Thanks to BasicPopup(), you can display two types of info : an error or a confirmation.
+Thanks to `BasicPopup()`, you can display two types of info : an error or a confirmation.
 First of all, to display something, you have to instantiate BasicPopup like this :
 
 ```
@@ -49,7 +49,7 @@ popup.sendNotification(new ConfirmationNotification(text, delay), showLogo);
 
 ## BasicAgreement
 
-Thanks to BasicAgreement(), you can ask a binary selectable question (yes or cancel) and execute a function accordingly. Moreovoer, you can also execute a function regardless of the user's choice. Remember that the user has to answer if he wants the notification to disppear. However, you can hide by yourself the notification.
+Thanks to `BasicAgreement()`, you can ask a binary selectable question (yes or cancel) and execute a function accordingly. Moreovoer, you can also execute a function regardless of the user's choice. Remember that the user has to answer if he wants the notification to disppear. However, you can hide by yourself the notification.
 
 First of all, you need to instantiate BasicAgreement like this :
 
