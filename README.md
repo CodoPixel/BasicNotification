@@ -33,7 +33,7 @@ Then, you can display a notification to inform the user that an error has occure
 
 ```
 var text = "An error has occured".
-var delay = 5; // default
+var delay = 5; // default (in seconds)
 var showLogo = true; // default
 popup.sendNotification(new AlertNotification(text, delay), showLogo);
 ```
@@ -42,7 +42,7 @@ Same thing for a confirmation :
 
 ```
 var text = "What a nice day !".
-var delay = 5; // default
+var delay = 5; // default (in seconds)
 var showLogo = true; // default
 popup.sendNotification(new ConfirmationNotification(text, delay), showLogo);
 ```
@@ -95,9 +95,9 @@ agreement.hide(onHiding);
 
 There is actually no way to modify the styles of the notification via Javascript. However, you can modify a little bit the css file.
 
-## Last informations
+## Last details
 
-You can add popup.js in <head>, but create your notifications at the end of <body>.
+You can add popup.js in `<head>`, but create your notifications at the end of `<body>`.
 To conclude, it's very precarious but you can do the basics with that.
 
 ## License
