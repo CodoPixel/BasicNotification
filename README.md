@@ -6,7 +6,7 @@ Creates a basic popup with Javascript. BasicNotification is the name of the repo
 
 By default, in order to customise the notifications, a specific icon from FontAwesome is displayed. For that, you have to add a css file : 
 
-```
+```html
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 ```
 
@@ -16,7 +16,7 @@ However, you can choose not to display the icon.
 
 BasicNotification needs a css file to work properly :
 
-```
+```html
 <link rel="stylesheet" href="css/popup.css">
 ```
 
@@ -25,13 +25,13 @@ BasicNotification needs a css file to work properly :
 Thanks to `BasicPopup()`, you can display two types of info : an error or a confirmation.
 First of all, to display something, you have to instantiate BasicPopup like this :
 
-```
+```javascript
 var popup = new BasicPopup();
 ```
 
 Then, you can display a notification to inform the user that an error has occured :
 
-```
+```javascript
 var text = "An error has occured".
 var delay = 5; // default (in seconds)
 var showLogo = true; // default
@@ -40,7 +40,7 @@ popup.sendNotification(new AlertNotification(text, delay), showLogo);
 
 Same thing for a confirmation :
 
-```
+```javascript
 var text = "What a nice day !".
 var delay = 5; // default (in seconds)
 var showLogo = true; // default
@@ -53,13 +53,13 @@ Thanks to `BasicAgreement()`, you can ask a binary selectable question (yes or c
 
 First of all, you need to instantiate BasicAgreement like this :
 
-```
+```javascript
 var agreement = new BasicAgreement();
 ```
 
 Then, you can display your question :
 
-```
+```javascript
 var question = "Do you agree with that ?";
 
 function yes() {
@@ -82,7 +82,7 @@ agreement.askForAgreement(question, yes, no, all);
 
 Finally, if the user really doesn't want to answer, you can hide the notification :
 
-```
+```javascript
 function onHiding() {
     // ...
 }
